@@ -1,0 +1,4 @@
+write CodinGamer
+
+STATEMENT
+Solve all the riddles by playing and coding real game

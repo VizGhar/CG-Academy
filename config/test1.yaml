@@ -1,0 +1,7 @@
+title:
+  1: "Episode #1 - Introduction"
+  2: "Episode #1 - Introduction"
+testIn: |-
+  1
+isTest: 'true'
+isValidator: 'true'
