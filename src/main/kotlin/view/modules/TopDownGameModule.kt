@@ -10,7 +10,7 @@ enum class AreaShape { RECTANGLE }
 data class Character(val sprite: String, val x: Int, val y: Int)
 data class ConversationTextPart(val text: String, val highlight: Boolean = false)
 data class ConversationItem(val who: String, val text: List<ConversationTextPart>, val copyText: String? = null)
-data class Conversation(val content: List<ConversationItem>)
+data class Conversation(val content: List<ConversationItem>, val immediate: Boolean)
 data class Level(
     val noFocusOverlayAsset: String,
     val noFocusOverlayBackgroundColor: Int,

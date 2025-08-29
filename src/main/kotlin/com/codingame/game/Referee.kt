@@ -1,8 +1,8 @@
 package com.codingame.game
 
-import com.codingame.game.level.checkLevel2Output
+import com.codingame.game.level.checkLevel1Outputs
+import com.codingame.game.level.getLevel0
 import com.codingame.game.level.getLevel1
-import com.codingame.game.level.getLevel2
 import com.codingame.gameengine.core.AbstractPlayer
 import com.codingame.gameengine.core.AbstractReferee
 import com.codingame.gameengine.core.SoloGameManager
@@ -24,15 +24,15 @@ class Referee : AbstractReferee() {
 
     fun sendInput() {
         when(gameManager.testCaseInput[0]?.toInt()) {
-            null -> throw IllegalStateException("Imposibru")
-            1 -> { gameManager.player.sendInputLine("Text") }
+            1 -> { }
+            else -> { }
         }
     }
 
     fun validateOutput(): Boolean {
         return when(gameManager.testCaseInput[0]?.toInt()) {
-            1 -> checkLevel2Output(gameManager.player.outputs)
-            else -> throw IllegalStateException("Imposibru")
+            1 -> checkLevel1Outputs(gameManager.player.outputs)
+            else -> true
         }
     }
 
@@ -40,9 +40,6 @@ class Referee : AbstractReferee() {
         sendInput()
         try {
             gameManager.player.execute()
-            initVisual(gameManager.testCaseInput[0]?.toInt()!!)
-            gameManager.winGame()
-            return
             if (validateOutput()) {
                 initVisual(gameManager.testCaseInput[0]?.toInt()!!)
                 gameManager.winGame()
@@ -53,6 +50,7 @@ class Referee : AbstractReferee() {
                 return
             }
         } catch (_: AbstractPlayer.TimeoutException) {
+            initVisual(gameManager.testCaseInput[0]?.toInt()!! - 1)
             gameManager.loseGame("Timeout!")
             return
         }
@@ -64,8 +62,8 @@ class Referee : AbstractReferee() {
 
         gameModule.setLevel(
             when (level) {
-                0 -> getLevel1(w, h)
-                1 -> getLevel2(w, h, gameManager.player.outputs[0])
+                0 -> getLevel0(w, h)
+                1 -> getLevel1(w, h, gameManager.player.outputs[0])
                 else -> throw IllegalStateException()
             }
         )
