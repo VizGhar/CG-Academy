@@ -7,7 +7,7 @@ export class TopDownGameModule {
         this.mapContainer = null;
         this.characterContainer = null;
         this.conversationHelper = new Conversation(PIXI);
-        this.noFocusHelper = new NoFocus(PIXI);
+        this.noFocusHelper = new NoFocus(PIXI, true);
         this.activeAreas = new Set();
         this.keys = {};
     }
@@ -247,12 +247,14 @@ export class TopDownGameModule {
  */
 class NoFocus {
 
-    constructor(PIXI) {
+    constructor(PIXI, once) {
         this.PIXI = PIXI;
         this.hasFocus = false;
+        this.once = once;
     }
 
     forceFocus(on) {
+        if (this.hasFocus && this.once) return;
         this.hasFocus = on;
         this.invalidateFocus();
     }
@@ -277,7 +279,7 @@ class NoFocus {
         this.invalidateFocus();
 
         window.onfocus = () => { this.hasFocus = true; this.invalidateFocus(); }
-        window.onblur = () => { this.hasFocus = false; this.invalidateFocus(); }
+        if (!this.once) window.onblur = () => { this.hasFocus = false; this.invalidateFocus(); }
         window.addEventListener('mousedown', (e) => { this.hasFocus = true; this.invalidateFocus(); });
     }
 
