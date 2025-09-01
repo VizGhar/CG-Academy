@@ -49,7 +49,7 @@ fun getLevel1(screenWidth: Int, screenHeight: Int, name: String): Level {
         mapScale = scale,
         x = ((screenWidth - scale * 16 * 10) / 2).toInt(),
         y = ((screenHeight - scale * 16 * 10) / 2).toInt(),
-        character = Character("character.png", 8, 6),
+        character = Character("character.png", 7, 7),
         npcs = listOf(Character("vampire.png", 8, 7))
     )
 }

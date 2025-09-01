@@ -93,8 +93,6 @@ export class TopDownGameModule {
         this.showMap(tileset, mapData, tileSize, antialias, mapScale, mapX, mapY);
         this.showCharacter(tileSize, mapScale);
 
-        this.conversationHelper.init(this.frameData.conversations, this.conversationContainer);
-
         this.mapContainer.cacheAsBitmap = true;
     }
     // endregion
@@ -199,6 +197,10 @@ export class TopDownGameModule {
         container.addChild(this.conversationContainer);
 
         this.showLevel();
+
+        this.conversationHelper.init(this.frameData.conversations, this.conversationContainer, this.frameData.mapScale);
+        this.conversationHelper.restartConversation();
+
         this.resolveAreaVisited();
 
         this.noFocusHelper.init(this.noFocusContainer, this.frameData);
@@ -304,12 +306,12 @@ class Conversation {
 
         this.baseTextStyle = new this.PIXI.TextStyle({
             fontFamily: "Arial",
-            fontSize: 32,
-            fill: "#ffffff",
-            stroke: "#000000",
+            fontSize: 40,
+            fill: "#000000",
+            stroke: "#eeeeee",
             strokeThickness: 4,
             dropShadow: true,
-            dropShadowColor: "#000000",
+            dropShadowColor: "#ffffff",
             dropShadowDistance: 2,
             align: "center",
         });
@@ -320,10 +322,11 @@ class Conversation {
         });
     }
 
-    init(conversations, pixiContainer) {
+    init(conversations, pixiContainer, scale) {
         if (!conversations || !pixiContainer) return;
         this.conversations = conversations;
         this.talkTextContainer = pixiContainer;
+        this.scale = scale;
     }
 
     initConversation(id) {
@@ -345,16 +348,18 @@ class Conversation {
         this.talkTextContainer.removeChildren();
         const container = new this.PIXI.Container();
 
-        const t1 = new this.PIXI.Text("Press [T] to talk.", this.boldTextStyle);
+        const t1 = new this.PIXI.Text("Press [T] to talk.", this.baseTextStyle);
         container.addChild(t1);
 
-        this.talkTextContainer.addChild(container);
-        container.x = 50;
-        container.y = 50;
+        this.decorate(container);
     }
 
-    startConversation(id) {
-        if (this.conversationId === id && this.conversationStarted) return;
+    restartConversation() {
+        this.startConversation(this.conversationId, true);
+    }
+
+    startConversation(id, force = false) {
+        if (!force && this.conversationId === id && this.conversationStarted) return;
 
         this.conversationId = id;
         this.conversationStarted = true;
@@ -376,6 +381,7 @@ class Conversation {
     }
 
     renderConversationLine() {
+        if (!this.currentConversation) return;
         const item = this.currentConversation.content[this.currentLineIndex];
         if (!item) return;
 
@@ -398,22 +404,77 @@ class Conversation {
             piece.x = offsetX;
             container.addChild(piece);
             offsetX += piece.width;
+            piece.y += (nameText.height - piece.height) / 2;
         });
-
-        this.talkTextContainer.addChild(container);
-        container.x = 50;
-        container.y = 50;
+        this.decorate(container);
     }
 
     nextConversationLine() {
         if (!this.currentConversation) return;
-
         this.currentLineIndex++;
         if (this.currentLineIndex >= this.currentConversation.content.length) {
             this.leaveConversation(this.conversationId);
         } else {
             this.renderConversationLine();
         }
+    }
+
+    decorate(container) {
+        const decorationContainer = new this.PIXI.Container();
+        const width = container.width;
+        const height = container.height;
+        const tileSize = 16;
+
+        const wTiles = Math.ceil(1.0 * width / tileSize / this.scale) + 2;
+        const hTiles = Math.ceil(1.0 * height / tileSize / this.scale) + 2;
+
+        // load tileset asset and set/unset antialiasing
+        const base = PIXI.BaseTexture.from("dialog.png");
+        base.scaleMode = PIXI.SCALE_MODES.NEAREST;
+        const tileTexture = new PIXI.Texture(base);
+
+        const TILES_PER_ROW = Math.floor(base.width / tileSize);
+
+        const getTileTexture = (index) => {
+            if (index < 0) return null;
+            const col = index % TILES_PER_ROW;
+            const row = Math.floor(index / TILES_PER_ROW);
+            const x = col * tileSize;
+            const y = row * tileSize;
+            const frame = new PIXI.Rectangle(x, y, tileSize, tileSize);
+            return new PIXI.Texture(tileTexture.baseTexture, frame);
+        };
+
+        const place = (index, col, row) => {
+            let texture = getTileTexture(index);
+            const tile = new PIXI.Sprite(texture);
+            tile.x = col * tileSize * this.scale;
+            tile.y = row * tileSize * this.scale;
+            tile.scale.set(this.scale);
+            decorationContainer.addChild(tile);
+        };
+
+        // corners
+        place(0, 0, 0);
+        place(5, wTiles - 1, 0);
+        place(30, 0, hTiles - 1);
+        place(35, wTiles - 1, hTiles - 1);
+
+        // sides
+        for (let col = 1; col < wTiles - 1; col++) { place(1, col, 0); place(31, col, hTiles - 1); }
+        for (let row = 1; row < hTiles - 1; row++) { place(6, 0, row); place(11, wTiles - 1, row); }
+
+        for (let row = 1; row < hTiles - 1; row++) {
+            for (let col = 1; col < wTiles - 1; col++) {
+                place(7, col, row);
+            }
+        }
+        this.talkTextContainer.addChild(decorationContainer);
+        decorationContainer.addChild(container);
+        decorationContainer.x = (1920 - decorationContainer.width) / 2;
+        decorationContainer.y = 1080 - decorationContainer.height;
+        container.x = (decorationContainer.width - container.width) / 2;
+        container.y = (decorationContainer.height - container.height) / 2;
     }
 
     processKeys(keys) {
