@@ -10,6 +10,7 @@ export class TopDownGameModule {
         this.noFocusHelper = new NoFocus(PIXI, true);
         this.activeAreas = new Set();
         this.keys = {};
+        this.playerSheet = {};
     }
 
     // region map
@@ -65,15 +66,34 @@ export class TopDownGameModule {
     }
 
     showCharacter(tileSize, mapScale) {
-        this.character = new PIXI.Sprite.from(this.frameData.character.sprite);
-        this.character.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
-        this.character.roundPixels = true;
+        let ssheet = new PIXI.BaseTexture.from("blonde_man_shadow.png");
+        ssheet.scaleMode = PIXI.SCALE_MODES.NEAREST;
+        let w = 32;
+        let h = 32;
+
+        this.playerSheet["standD"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 0 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 0 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 0 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 0 * h, w, h))];
+        this.playerSheet["standL"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 1 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 1 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 1 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 1 * h, w, h))];
+        this.playerSheet["standR"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 2 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 2 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 2 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 2 * h, w, h))];
+        this.playerSheet["standU"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 3 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 3 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 3 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 3 * h, w, h))];
+        this.playerSheet["walkD"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 4 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 4 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 4 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 4 * h, w, h))];
+        this.playerSheet["walkL"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 5 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 5 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 5 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 5 * h, w, h))];
+        this.playerSheet["walkR"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 6 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 6 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 6 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 6 * h, w, h))];
+        this.playerSheet["walkU"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 7 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 7 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 7 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 7 * h, w, h))];
+
+        this.character = new PIXI.AnimatedSprite(this.playerSheet.standD);
+        this.character.anchor.set(0.25, 0.5);
+        this.character.animationSpeed = .1;
+        this.character.loop = true;
+
         this.character.position.set(
             this.frameData.character.x * tileSize * mapScale,
             this.frameData.character.y * tileSize * mapScale
         );
+
         this.character.scale.set(mapScale);
         this.characterContainer.addChild(this.character);
+
+        this.character.play();
     }
 
     showLevel() {
@@ -107,18 +127,26 @@ export class TopDownGameModule {
             this.frameData.tileMapObstacles[Math.ceil(row)][Math.ceil(col)] === true
     }
 
+    stopMovement() {
+        if (this.character.textures === this.playerSheet.walkU) { this.character.textures = this.playerSheet.standU; this.character.play(); }
+        if (this.character.textures === this.playerSheet.walkD) { this.character.textures = this.playerSheet.standD; this.character.play(); }
+        if (this.character.textures === this.playerSheet.walkL) { this.character.textures = this.playerSheet.standL; this.character.play(); }
+        if (this.character.textures === this.playerSheet.walkR) { this.character.textures = this.playerSheet.standR; this.character.play(); }
+    }
+
     handleMovement() {
         const moveSpeed = 5;
 
         const originalX = this.character.x;
         const originalY = this.character.y;
 
-        if (this.keys.KeyW) this.character.y -= moveSpeed;
-        if (this.keys.KeyS) this.character.y += moveSpeed;
+        if (this.keys.KeyW) { this.character.y -= moveSpeed; if (this.character.textures !== this.playerSheet.walkU) { this.character.textures = this.playerSheet.walkU; this.character.play() } }
+        if (this.keys.KeyS) { this.character.y += moveSpeed; if (this.character.textures !== this.playerSheet.walkD) { this.character.textures = this.playerSheet.walkD; this.character.play() } }
         if (this.blocked()) { this.character.y = originalY; }
 
-        if (this.keys.KeyA) this.character.x -= moveSpeed;
-        if (this.keys.KeyD) this.character.x += moveSpeed;
+        if (this.keys.KeyA) { this.character.x -= moveSpeed; if (this.character.textures !== this.playerSheet.walkL) { this.character.textures = this.playerSheet.walkL; this.character.play() } }
+        if (this.keys.KeyD) { this.character.x += moveSpeed; if (this.character.textures !== this.playerSheet.walkR) { this.character.textures = this.playerSheet.walkR; this.character.play() } }
+
         if (this.blocked()) { this.character.x = originalX; }
     }
     // endregion
@@ -223,6 +251,8 @@ export class TopDownGameModule {
         if (Object.values(this.keys).some(v => v === true)) {
             this.handleMovement();
             this.resolveAreaVisited();
+        } else {
+            this.stopMovement();
         }
 
         this.prevKeys = { ...this.keys };
