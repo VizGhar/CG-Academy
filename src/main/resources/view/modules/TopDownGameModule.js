@@ -2,30 +2,34 @@
 const files = new Map();
 
 files.set("Dungeon_Tileset.json", `{"columns":10,"image":"tileset.png","imageheight":160,"imagewidth":160,"margin":0,"name":"Dungeon_Tileset","spacing":0,"tilecount":100,"tiledversion":"1.11.2","tileheight":16,"tilewidth":16,"type":"tileset","version":"1.10"}`);
-files.set("lvl0-s1", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,79,79,79,79,79,79,79,1,2,3,2,3,2,3,4,5,6,11,8,9,8,9,8,9,8,9,16,21,18,28,29,28,29,28,29,19,26,31,8,9,18,19,18,19,18,19,36,11,18,19,51,18,19,56,7,8,6,21,17,18,26,28,29,21,17,18,16,31,27,28,36,8,9,31,27,28,26,41,42,45,46,18,19,41,42,45,46,79,79,79,79,28,29,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,67,68,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":2,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0}],"nextlayerid":3,"nextobjectid":1,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`);
-files.set("lvl1-s1", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,79,79,79,79,79,79,79,1,2,3,2,3,2,3,4,5,6,11,8,9,8,9,8,9,8,9,16,21,18,28,29,28,29,28,29,19,26,31,8,9,18,19,18,19,18,19,36,11,18,19,51,18,19,56,7,8,6,21,17,18,26,28,29,21,17,18,16,31,27,28,36,8,9,31,27,28,26,41,42,45,46,18,19,41,42,45,46,79,79,79,79,28,29,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":2,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0}],"nextlayerid":3,"nextobjectid":1,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`);
-files.set("lvl1-s2", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,31,22,25,26,79,79,79,1,2,3,2,22,25,3,4,5,6,11,12,13,14,9,8,13,14,15,16,21,22,28,51,56,2,28,3,3,26,31,22,9,26,11,12,19,18,25,36,11,22,19,36,31,32,33,7,25,6,21,22,18,36,41,42,56,22,25,16,31,32,33,36,79,79,31,32,35,26,41,42,45,43,79,79,42,42,45,46,79,79,79,79,79,79,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,65,0,91,0,0,0,76,0,0,0,0,0,0,0,0,0,0,78,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,81,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":3,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0}],"nextlayerid":4,"nextobjectid":1,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`)
+files.set("lvl0-s1", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,79,79,79,79,79,79,79,1,2,3,2,3,2,3,4,5,6,11,8,9,8,9,8,9,8,9,16,21,18,28,29,28,29,28,29,19,26,31,8,9,18,19,18,19,18,19,36,11,18,19,51,18,19,56,7,8,6,21,17,18,26,28,29,21,17,18,16,31,27,28,36,8,9,31,27,28,26,41,42,45,46,18,19,41,42,45,46,79,79,79,79,28,29,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,67,68,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":2,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"draworder":"topdown","id":3,"name":"obstacles","objects":[{"height":160,"id":1,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":0,"y":0},{"height":160,"id":2,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":144,"y":0},{"height":80,"id":3,"name":"","rotation":0,"type":"","visible":true,"width":64,"x":48,"y":80},{"height":32,"id":5,"name":"","rotation":0,"type":"","visible":true,"width":128,"x":16,"y":0},{"height":32,"id":6,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":16,"y":128},{"height":32,"id":7,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":112,"y":128}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0}],"nextlayerid":4,"nextobjectid":9,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`);
+files.set("lvl1-s1", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,79,79,79,79,79,79,79,1,2,3,2,3,2,3,4,5,6,11,8,9,8,9,8,9,8,9,16,21,18,28,29,28,29,28,29,19,26,31,8,9,18,19,18,19,18,19,36,11,18,19,51,18,19,56,7,8,6,21,17,18,26,28,29,21,17,18,16,31,27,28,36,8,9,31,27,28,26,41,42,45,46,18,19,41,42,45,46,79,79,79,79,28,29,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":2,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"draworder":"topdown","id":3,"name":"obstacles","objects":[{"height":160,"id":1,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":0,"y":0},{"height":160,"id":2,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":144,"y":0},{"height":80,"id":3,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":48,"y":80},{"height":80,"id":4,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":96,"y":80},{"height":32,"id":5,"name":"","rotation":0,"type":"","visible":true,"width":128,"x":16,"y":0},{"height":32,"id":6,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":16,"y":128},{"height":32,"id":7,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":112,"y":128}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0}],"nextlayerid":4,"nextobjectid":8,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`);
+files.set("lvl1-s2", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,31,22,25,26,79,79,79,1,2,3,2,22,25,3,4,5,6,11,12,13,14,9,8,13,14,15,16,21,22,28,51,56,2,28,3,3,26,31,22,9,26,11,12,19,18,25,36,11,22,19,36,31,32,33,7,25,6,21,22,18,36,41,42,56,22,25,16,31,32,33,36,79,79,31,32,35,26,41,42,45,43,79,79,42,42,45,46,79,79,79,79,79,79,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,65,0,91,0,0,0,76,0,0,0,0,0,0,0,0,0,0,78,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,81,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":3,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"draworder":"topdown","id":4,"name":"obstacles","objects":[{"height":32,"id":1,"name":"","rotation":0,"type":"","visible":true,"width":64,"x":0,"y":0},{"height":128,"id":2,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":0,"y":32},{"height":32,"id":3,"name":"","rotation":0,"type":"","visible":true,"width":144,"x":16,"y":128},{"height":128,"id":4,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":144,"y":0},{"height":32,"id":5,"name":"","rotation":0,"type":"","visible":true,"width":48,"x":96,"y":0},{"height":80,"id":6,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":48,"y":48},{"height":16,"id":7,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":80,"y":48},{"height":32,"id":8,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":80,"y":96},{"height":16,"id":9,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":112,"y":48},{"height":12,"id":10,"name":"","rotation":0,"type":"","visible":true,"width":12,"x":98,"y":66}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0}],"nextlayerid":5,"nextobjectid":11,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`)
 
 // character sprites can be animated:
 const sprites = new Map();
 sprites.set("hero", {
     "sheet": "blonde_man_shadow.png",
     "size": 32,
-    "movements": [
-        { "name" : "standD", "values": [[0, 0], [1, 0], [2, 0], [3, 0]] },
-        { "name" : "standL", "values" : [[0, 1], [1, 1], [2, 1], [3, 1]] },
-        { "name" : "standR", "values" : [[0, 2], [1, 2], [2, 2], [3, 2]] },
-        { "name" : "standU", "values" : [[0, 3], [1, 3], [2, 3], [3, 3]] },
-        { "name" : "walkD", "values" : [[0, 4], [1, 4], [2, 4], [3, 4]] },
-        { "name" : "walkL", "values" : [[0, 5], [1, 5], [2, 5], [3, 5]] },
-        { "name" : "walkR", "values" : [[0, 6], [1, 6], [2, 6], [3, 6]] },
-        { "name" : "walkU", "values" : [[0, 7], [1, 7], [2, 7], [3, 7]] }
-    ]
+    "movements": [{ "name" : "standD", "values": [[0, 0], [1, 0], [2, 0], [3, 0]] }, { "name" : "standL", "values" : [[0, 1], [1, 1], [2, 1], [3, 1]] }, { "name" : "standR", "values" : [[0, 2], [1, 2], [2, 2], [3, 2]] }, { "name" : "standU", "values" : [[0, 3], [1, 3], [2, 3], [3, 3]] }, { "name" : "walkD", "values" : [[0, 4], [1, 4], [2, 4], [3, 4]] }, { "name" : "walkL", "values" : [[0, 5], [1, 5], [2, 5], [3, 5]] }, { "name" : "walkR", "values" : [[0, 6], [1, 6], [2, 6], [3, 6]] }, { "name" : "walkU", "values" : [[0, 7], [1, 7], [2, 7], [3, 7]] }]
 });
-sprites.set("vampire", {});
+sprites.set("vampire", {
+    "sheet": "vampire.png",
+    "size": 16,
+    "movements": [{ "name" : "standD", "values": [[0, 0]] }, { "name" : "standL", "values" : [[0, 0]] }, { "name" : "standR", "values" : [[0, 0]] }, { "name" : "standU", "values" : [[0, 0]] }]
+});
 
-const levelIntro = { "scenes": [ "lvl0-s1" ], "hero": { "sprite": "hero", "x": 2, "y": 6 }, "npcs": [{"sprite": "vampire", "x": 8, "y": 7}] };
-const level1 = { "scenes": [ "lvl1-s1" ], "hero": { "sprite": "hero", "x": 7, "y": 7 }, "npcs": [{"sprite": "vampire", "x": 8, "y": 7}] }
+const levels = new Map();
+levels.set("intro", { "scenes": [ { "file": "lvl0-s1", "hero": { "sprite": "hero", "x": 2, "y": 6 }, "npcs": [{"sprite": "vampire", "x": 8, "y": 7}] } ]});
+levels.set("1", { "scenes": [ { "file": "lvl1-s1", "hero": { "sprite": "hero", "x": 7, "y": 7 }, "npcs": [{ "sprite": "vampire", "x": 8, "y": 7 }] }, { "file": "lvl1-s2", "hero": { "sprite": "hero", "x": 7, "y": 7 } } ] });
+
+const doRectanglesOverlap = (rect1, rect2) => {
+    let [left1, top1, right1, bottom1] = [...rect1],
+        [left2, top2, right2, bottom2] = [...rect2];
+
+    return !(top1 >= bottom2 || top2 >= bottom1 || right1 <= left2 || right2 <= left1);
+}
+
 
 export class TopDownGameModule {
     static get moduleName() {
@@ -43,11 +47,8 @@ export class TopDownGameModule {
     }
 
     // region map
-    showMap(mapScale, mapX, mapY) {
-
-        // picture me this - level 0
-        const currentLevel = levelIntro;
-        const currentScreen = JSON.parse(files.get(currentLevel.scenes[0]));
+    showScene(scene, mapScale, mapX, mapY) {
+        const currentScreen = JSON.parse(files.get(scene.file));
         const currentScreenTileset = JSON.parse(files.get(currentScreen.tilesets[0].source));
 
         const tileSize = currentScreenTileset.tilewidth; // NOTE: tileheight expected to be equal to tilewidth
@@ -87,9 +88,9 @@ export class TopDownGameModule {
             }
         }
 
-        for (let i = 0; i < this.frameData.npcs.length; i++) {
-            const character = this.frameData.npcs[i]
-            const npc = new PIXI.Sprite.from(character.sprite);
+        for (let i = 0; i < scene.npcs.length; i++) {
+            const character = scene.npcs[i]
+            const npc = new PIXI.Sprite.from(sprites.get(character.sprite).sheet);
             npc.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
             npc.roundPixels = true;
             npc.position.set(character.x * tileSize * mapScale, character.y * tileSize * mapScale);
@@ -104,7 +105,9 @@ export class TopDownGameModule {
         this.characterContainer.y = mapY;
     }
 
-    showCharacter(sprite, tileSize, mapScale) {
+    showCharacter(scene, tileSize, mapScale) {
+        const sprite = sprites.get(scene.hero.sprite);
+
         let ssheet = new PIXI.BaseTexture.from(sprite.sheet);
         ssheet.scaleMode = PIXI.SCALE_MODES.NEAREST;
 
@@ -122,8 +125,8 @@ export class TopDownGameModule {
         this.character.loop = true;
 
         this.character.position.set(
-            this.frameData.character.x * tileSize * mapScale,
-            this.frameData.character.y * tileSize * mapScale
+            scene.hero.x * tileSize * mapScale,
+            scene.hero.y * tileSize * mapScale
         );
 
         this.character.scale.set(mapScale);
@@ -141,9 +144,10 @@ export class TopDownGameModule {
         const mapY = this.frameData.y;
 
         this.totalTileSize = mapScale * 16;
+        this.level = levels.get(this.frameData.level);
 
-        this.showMap(mapScale, mapX, mapY);
-        this.showCharacter(sprites.get("hero"), 16, mapScale);
+        this.showScene(this.level.scenes[0], mapScale, mapX, mapY);
+        this.showCharacter(this.level.scenes[0], 16, mapScale);
 
         this.mapContainer.cacheAsBitmap = true;
     }
@@ -151,12 +155,12 @@ export class TopDownGameModule {
 
     // region collisions
     blocked() {
-        const col = this.character.x / this.totalTileSize;
-        const row = this.character.y / this.totalTileSize;
-        return this.frameData.tileMapObstacles[Math.floor(row)][Math.floor(col)] === true ||
-            this.frameData.tileMapObstacles[Math.ceil(row)][Math.floor(col)] === true ||
-            this.frameData.tileMapObstacles[Math.floor(row)][Math.ceil(col)] === true ||
-            this.frameData.tileMapObstacles[Math.ceil(row)][Math.ceil(col)] === true
+        const currentLevel = this.level;
+        const currentScreen = JSON.parse(files.get(currentLevel.scenes[0].file));
+        const obstacles = currentScreen.layers.find(layer => layer.name === 'obstacles');
+
+        const characterRect = [this.character.x / 6, this.character.y / 6, this.character.x/ 6 + 16, this.character.y/ 6 + 16];
+        return (obstacles.objects.some(obj => doRectanglesOverlap(characterRect, [obj.x, obj.y, obj.x + obj.width, obj.y + obj.height])));
     }
 
     stopMovement() {

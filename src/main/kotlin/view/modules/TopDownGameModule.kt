@@ -16,17 +16,15 @@ data class Conversation(val content: List<ConversationItem>, val immediate: Bool
 data class Scene(val tilemap: String)
 
 data class Level(
+    val level: String,
     val noFocusOverlayAsset: String,
     val noFocusOverlayBackgroundColor: Int,
     val noFocusOverlayBackgroundAlpha: Double,
-    val tileMapObstacles: List<List<Boolean>>,
     val areas: Map<String, Area>,
     val conversations: Map<String, Conversation>,
     val mapScale: Double,
     val x: Int,
-    val y: Int,
-    val character: Character,
-    val npcs: List<Character>
+    val y: Int
 )
 
 class TopDownGameModule @Inject constructor(
