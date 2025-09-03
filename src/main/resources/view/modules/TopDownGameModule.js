@@ -1,3 +1,32 @@
+// can't pass JSON files synchronously here, so...
+const files = new Map();
+
+files.set("Dungeon_Tileset.json", `{"columns":10,"image":"tileset.png","imageheight":160,"imagewidth":160,"margin":0,"name":"Dungeon_Tileset","spacing":0,"tilecount":100,"tiledversion":"1.11.2","tileheight":16,"tilewidth":16,"type":"tileset","version":"1.10"}`);
+files.set("lvl0-s1", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,79,79,79,79,79,79,79,1,2,3,2,3,2,3,4,5,6,11,8,9,8,9,8,9,8,9,16,21,18,28,29,28,29,28,29,19,26,31,8,9,18,19,18,19,18,19,36,11,18,19,51,18,19,56,7,8,6,21,17,18,26,28,29,21,17,18,16,31,27,28,36,8,9,31,27,28,26,41,42,45,46,18,19,41,42,45,46,79,79,79,79,28,29,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,67,68,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":2,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0}],"nextlayerid":3,"nextobjectid":1,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`);
+files.set("lvl1-s1", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,79,79,79,79,79,79,79,1,2,3,2,3,2,3,4,5,6,11,8,9,8,9,8,9,8,9,16,21,18,28,29,28,29,28,29,19,26,31,8,9,18,19,18,19,18,19,36,11,18,19,51,18,19,56,7,8,6,21,17,18,26,28,29,21,17,18,16,31,27,28,36,8,9,31,27,28,26,41,42,45,46,18,19,41,42,45,46,79,79,79,79,28,29,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":2,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0}],"nextlayerid":3,"nextobjectid":1,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`);
+files.set("lvl1-s2", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,31,22,25,26,79,79,79,1,2,3,2,22,25,3,4,5,6,11,12,13,14,9,8,13,14,15,16,21,22,28,51,56,2,28,3,3,26,31,22,9,26,11,12,19,18,25,36,11,22,19,36,31,32,33,7,25,6,21,22,18,36,41,42,56,22,25,16,31,32,33,36,79,79,31,32,35,26,41,42,45,43,79,79,42,42,45,46,79,79,79,79,79,79,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,65,0,91,0,0,0,76,0,0,0,0,0,0,0,0,0,0,78,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,81,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":3,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0}],"nextlayerid":4,"nextobjectid":1,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`)
+
+// character sprites can be animated:
+const sprites = new Map();
+sprites.set("hero", {
+    "sheet": "blonde_man_shadow.png",
+    "size": 32,
+    "movements": [
+        { "name" : "standD", "values": [[0, 0], [1, 0], [2, 0], [3, 0]] },
+        { "name" : "standL", "values" : [[0, 1], [1, 1], [2, 1], [3, 1]] },
+        { "name" : "standR", "values" : [[0, 2], [1, 2], [2, 2], [3, 2]] },
+        { "name" : "standU", "values" : [[0, 3], [1, 3], [2, 3], [3, 3]] },
+        { "name" : "walkD", "values" : [[0, 4], [1, 4], [2, 4], [3, 4]] },
+        { "name" : "walkL", "values" : [[0, 5], [1, 5], [2, 5], [3, 5]] },
+        { "name" : "walkR", "values" : [[0, 6], [1, 6], [2, 6], [3, 6]] },
+        { "name" : "walkU", "values" : [[0, 7], [1, 7], [2, 7], [3, 7]] }
+    ]
+});
+sprites.set("vampire", {});
+
+const levelIntro = { "scenes": [ "lvl0-s1" ], "hero": { "sprite": "hero", "x": 2, "y": 6 }, "npcs": [{"sprite": "vampire", "x": 8, "y": 7}] };
+const level1 = { "scenes": [ "lvl1-s1" ], "hero": { "sprite": "hero", "x": 7, "y": 7 }, "npcs": [{"sprite": "vampire", "x": 8, "y": 7}] }
+
 export class TopDownGameModule {
     static get moduleName() {
         return 'TopDownGameModule';
@@ -14,10 +43,19 @@ export class TopDownGameModule {
     }
 
     // region map
-    showMap(tileset, mapData, tileSize, antialias, mapScale, mapX, mapY) {
-        // load tileset asset and set/unset antialiasing
-        const base = PIXI.BaseTexture.from(tileset);
-        base.scaleMode = antialias ? PIXI.SCALE_MODES.LINEAR : PIXI.SCALE_MODES.NEAREST;
+    showMap(mapScale, mapX, mapY) {
+
+        // picture me this - level 0
+        const currentLevel = levelIntro;
+        const currentScreen = JSON.parse(files.get(currentLevel.scenes[0]));
+        const currentScreenTileset = JSON.parse(files.get(currentScreen.tilesets[0].source));
+
+        const tileSize = currentScreenTileset.tilewidth; // NOTE: tileheight expected to be equal to tilewidth
+        const layers = currentScreen.layers;
+
+        // load texture
+        const base = PIXI.BaseTexture.from(currentScreenTileset.image);
+        base.scaleMode = PIXI.SCALE_MODES.NEAREST;
         const tileTexture = new PIXI.Texture(base);
 
         const TILES_PER_ROW = Math.floor(base.width / tileSize);
@@ -31,17 +69,18 @@ export class TopDownGameModule {
             return new PIXI.Texture(tileTexture.baseTexture, frame);
         };
 
-        for (let layer = 0; layer < mapData.length; layer++) {
-            for (let row = 0; row < mapData[0].length; row++) {
-                for (let col = 0; col < mapData[0][0].length; col++) {
-                    const index = mapData[layer][row][col];
-                    let texture = getTileTexture(index);
+        for (let layerId = 0; layerId < layers.length; layerId++) {
+            const layer = layers[layerId];
+
+            for (let row = 0; row < layer.height; row++) {
+                for (let col = 0; col < layer.width; col++) {
+                    const index = layer.data[row * layer.width + col];
+                    let texture = getTileTexture(index - 1);
                     if (!texture) continue;
 
                     const tile = new PIXI.Sprite(texture);
                     tile.x = col * tileSize * mapScale;
                     tile.y = row * tileSize * mapScale;
-                    tile.zIndex = layer * 100;
                     tile.scale.set(mapScale);
                     this.mapContainer.addChild(tile);
                 }
@@ -55,7 +94,7 @@ export class TopDownGameModule {
             npc.roundPixels = true;
             npc.position.set(character.x * tileSize * mapScale, character.y * tileSize * mapScale);
             npc.scale.set(mapScale);
-            npc.zIndex = mapData.length * 100;
+            npc.zIndex = 1;
             this.mapContainer.addChild(npc);
         }
 
@@ -65,20 +104,17 @@ export class TopDownGameModule {
         this.characterContainer.y = mapY;
     }
 
-    showCharacter(tileSize, mapScale) {
-        let ssheet = new PIXI.BaseTexture.from("blonde_man_shadow.png");
+    showCharacter(sprite, tileSize, mapScale) {
+        let ssheet = new PIXI.BaseTexture.from(sprite.sheet);
         ssheet.scaleMode = PIXI.SCALE_MODES.NEAREST;
-        let w = 32;
-        let h = 32;
 
-        this.playerSheet["standD"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 0 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 0 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 0 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 0 * h, w, h))];
-        this.playerSheet["standL"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 1 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 1 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 1 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 1 * h, w, h))];
-        this.playerSheet["standR"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 2 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 2 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 2 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 2 * h, w, h))];
-        this.playerSheet["standU"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 3 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 3 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 3 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 3 * h, w, h))];
-        this.playerSheet["walkD"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 4 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 4 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 4 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 4 * h, w, h))];
-        this.playerSheet["walkL"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 5 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 5 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 5 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 5 * h, w, h))];
-        this.playerSheet["walkR"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 6 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 6 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 6 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 6 * h, w, h))];
-        this.playerSheet["walkU"] = [new PIXI.Texture(ssheet, new PIXI.Rectangle(0, 7 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(w, 7 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 7 * h, w, h)), new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 7 * h, w, h))];
+        let w = sprite.size;
+        let h = sprite.size;
+
+        for (let i = 0; i < sprite.movements.length; i++) {
+            const movement = sprite.movements[i];
+            this.playerSheet[movement.name] = movement.values.map(([x, y]) => { return new PIXI.Texture(ssheet, new PIXI.Rectangle(x * w, y * h, w, h)); });
+        }
 
         this.character = new PIXI.AnimatedSprite(this.playerSheet.standD);
         this.character.anchor.set(0.25, 0.5);
@@ -100,18 +136,14 @@ export class TopDownGameModule {
         if (!this.mapContainer || !this.frameData) return;
 
         // used
-        const tileset = this.frameData.tileMapAsset;
-        const mapData = this.frameData.tileMap;
-        const tileSize = this.frameData.tileSize;
-        const antialias = this.frameData.antialias;
         const mapScale = this.frameData.mapScale;
         const mapX = this.frameData.x;
         const mapY = this.frameData.y;
 
-        this.totalTileSize = mapScale * tileSize;
+        this.totalTileSize = mapScale * 16;
 
-        this.showMap(tileset, mapData, tileSize, antialias, mapScale, mapX, mapY);
-        this.showCharacter(tileSize, mapScale);
+        this.showMap(mapScale, mapX, mapY);
+        this.showCharacter(sprites.get("hero"), 16, mapScale);
 
         this.mapContainer.cacheAsBitmap = true;
     }
