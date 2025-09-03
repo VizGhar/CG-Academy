@@ -237,7 +237,7 @@ export class TopDownGameModule {
     handleFrameData(frameInfo, frameData) {
         if (frameData) { this.frameData = frameData; }
         this.showLevel();
-        this.noFocusHelper.init(this.noFocusContainer, this.frameData);
+        this.noFocusHelper.init(this.noFocusContainer);
     }
 
     /** CG API */
@@ -267,7 +267,7 @@ export class TopDownGameModule {
 
         this.resolveAreaVisited();
 
-        this.noFocusHelper.init(this.noFocusContainer, this.frameData);
+        this.noFocusHelper.init(this.noFocusContainer);
 
         window.addEventListener('keydown', (e) => { this.keys[e.code] = true; this.noFocusHelper.forceFocus(true); });
         window.addEventListener('keyup', (e) => { this.keys[e.code] = false; this.noFocusHelper.forceFocus(true); });
@@ -327,18 +327,18 @@ class NoFocus {
         this.invalidateFocus();
     }
 
-    init(container, frameData) {
-        if (!container || !frameData) return;
+    init(container) {
+        if (!container) return;
 
         container.removeChildren().forEach(c => c.destroy({ children: true }));
 
         this.noFocusBackground = new this.PIXI.Graphics();
-        this.noFocusBackground.beginFill(frameData.noFocusOverlayBackgroundColor, frameData.noFocusOverlayBackgroundAlpha);
+        this.noFocusBackground.beginFill(0x000000, 0.7);
         this.noFocusBackground.drawRect(0, 0, 1920, 1080);
         this.noFocusBackground.endFill();
         container.addChild(this.noFocusBackground);
 
-        this.noFocusImage = this.PIXI.Sprite.from(frameData.noFocusOverlayAsset);
+        this.noFocusImage = this.PIXI.Sprite.from("no_focus.png");
         this.noFocusImage.anchor.set(0.5); // stred obrázka
         this.noFocusImage.x = 1920 / 2;
         this.noFocusImage.y = 1080 / 2;

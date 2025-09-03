@@ -26,9 +26,6 @@ fun getLevel0(screenWidth: Int, screenHeight: Int): Level {
     val scale = 6.0
     return Level(
         level = "intro",
-        noFocusOverlayAsset = "no_focus.png",
-        noFocusOverlayBackgroundColor = 0x000000,
-        noFocusOverlayBackgroundAlpha = 0.7,
         areas = level0Areas,
         conversations = level0Conversations,
         mapScale = scale,

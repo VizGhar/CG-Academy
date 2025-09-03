@@ -17,9 +17,6 @@ data class Scene(val tilemap: String)
 
 data class Level(
     val level: String,
-    val noFocusOverlayAsset: String,
-    val noFocusOverlayBackgroundColor: Int,
-    val noFocusOverlayBackgroundAlpha: Double,
     val areas: Map<String, Area>,
     val conversations: Map<String, Conversation>,
     val mapScale: Double,
