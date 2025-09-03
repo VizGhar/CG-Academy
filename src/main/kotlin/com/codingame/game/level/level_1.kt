@@ -1,15 +1,10 @@
 package com.codingame.game.level
 
-import view.modules.Area
-import view.modules.AreaShape
-import view.modules.Character
 import view.modules.Conversation
 import view.modules.ConversationItem
 import view.modules.ConversationTextPart
 import view.modules.Level
 
-
-private val level1Areas = mapOf("c1" to Area(AreaShape.RECTANGLE, 7.0, 7.0, 9.0, 9.0), "c2" to Area(AreaShape.RECTANGLE, 4.0, 7.0, 6.0, 9.0))
 private fun level1Conversations(name: String) = mapOf(
     "c1" to Conversation(
         content = listOf(
@@ -34,7 +29,6 @@ fun getLevel1(screenWidth: Int, screenHeight: Int, name: String): Level {
     val scale = 6.0
     return Level(
         level = "1",
-        areas = level1Areas,
         conversations = level1Conversations(name),
         mapScale = scale,
         x = ((screenWidth - scale * 16 * 10) / 2).toInt(),
