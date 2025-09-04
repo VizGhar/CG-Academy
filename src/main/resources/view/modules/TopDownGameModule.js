@@ -1,12 +1,16 @@
-// can't pass JSON files synchronously here, so...
+// noinspection JSPotentiallyInvalidConstructorUsage,JSUnresolvedReference,JSUnusedGlobalSymbols
+
+// region tilemaps
+// tilemaps and tiletests are meant to be stored as files - currently simply hardcoded here:
 const files = new Map();
-
 files.set("Dungeon_Tileset.json", `{"columns":10,"image":"tileset.png","imageheight":160,"imagewidth":160,"margin":0,"name":"Dungeon_Tileset","spacing":0,"tilecount":100,"tiledversion":"1.11.2","tileheight":16,"tilewidth":16,"type":"tileset","version":"1.10"}`);
-files.set("lvl0-s1", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,79,79,79,79,79,79,79,1,2,3,2,3,2,3,4,5,6,11,8,9,8,9,8,9,8,9,16,21,18,28,29,28,29,28,29,19,26,31,8,9,18,19,18,19,18,19,36,11,18,19,51,18,19,56,7,8,6,21,17,18,26,28,29,21,17,18,16,31,27,28,36,8,9,31,27,28,26,41,42,45,46,18,19,41,42,45,46,79,79,79,79,28,29,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,67,68,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":2,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"draworder":"topdown","id":3,"name":"obstacles","objects":[{"height":160,"id":1,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":0,"y":0},{"height":160,"id":2,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":144,"y":0},{"height":80,"id":3,"name":"","rotation":0,"type":"","visible":true,"width":64,"x":48,"y":80},{"height":32,"id":5,"name":"","rotation":0,"type":"","visible":true,"width":128,"x":16,"y":0},{"height":32,"id":6,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":16,"y":128},{"height":32,"id":7,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":112,"y":128}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0}],"nextlayerid":4,"nextobjectid":9,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`);
-files.set("lvl1-s1", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,79,79,79,79,79,79,79,1,2,3,2,3,2,3,4,5,6,11,8,9,8,9,8,9,8,9,16,21,18,28,29,28,29,28,29,19,26,31,8,9,18,19,18,19,18,19,36,11,18,19,51,18,19,56,7,8,6,21,17,18,26,28,29,21,17,18,16,31,27,28,36,8,9,31,27,28,26,41,42,45,46,18,19,41,42,45,46,79,79,79,79,28,29,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":2,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"draworder":"topdown","id":3,"name":"obstacles","objects":[{"height":160,"id":1,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":0,"y":0},{"height":160,"id":2,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":144,"y":0},{"height":80,"id":3,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":48,"y":80},{"height":80,"id":4,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":96,"y":80},{"height":32,"id":5,"name":"","rotation":0,"type":"","visible":true,"width":128,"x":16,"y":0},{"height":32,"id":6,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":16,"y":128},{"height":32,"id":7,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":112,"y":128}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0},{"draworder":"topdown","id":4,"name":"conversations","objects":[{"height":16,"id":12,"name":"c1","properties":[{"name":"text","type":"string","value":"[{\\"text\\" : \\"WOW\\"}]"}],"rotation":0,"type":"","visible":true,"width":16,"x":120,"y":104}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0},{"draworder":"topdown","id":5,"name":"teleports","objects":[{"height":16,"id":13,"name":"","properties":[{"name":"target","type":"string","value":"lvl1-s2"}],"rotation":0,"type":"","visible":true,"width":32,"x":64,"y":144}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0}],"nextlayerid":6,"nextobjectid":15,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`);
-files.set("lvl1-s2", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,31,22,25,26,79,79,79,1,2,3,2,22,25,3,4,5,6,11,12,13,14,9,8,13,14,15,16,21,22,28,51,56,2,28,3,3,26,31,22,9,26,11,12,19,18,25,36,11,22,19,36,31,32,33,7,25,6,21,22,18,36,41,42,56,22,25,16,31,32,33,36,79,79,31,32,35,26,41,42,45,43,79,79,42,42,45,46,79,79,79,79,79,79,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,65,0,91,0,0,0,76,0,0,0,0,0,0,0,0,0,0,78,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,81,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":3,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"draworder":"topdown","id":4,"name":"obstacles","objects":[{"height":32,"id":1,"name":"","rotation":0,"type":"","visible":true,"width":64,"x":0,"y":0},{"height":128,"id":2,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":0,"y":32},{"height":32,"id":3,"name":"","rotation":0,"type":"","visible":true,"width":144,"x":16,"y":128},{"height":128,"id":4,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":144,"y":0},{"height":32,"id":5,"name":"","rotation":0,"type":"","visible":true,"width":48,"x":96,"y":0},{"height":80,"id":6,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":48,"y":48},{"height":16,"id":7,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":80,"y":48},{"height":32,"id":8,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":80,"y":96},{"height":16,"id":9,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":112,"y":48},{"height":12,"id":10,"name":"","rotation":0,"type":"","visible":true,"width":12,"x":98,"y":66}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0},{"draworder":"topdown","id":6,"name":"teleports","objects":[{"height":8,"id":13,"name":"","properties":[{"name":"target","type":"string","value":"lvl1-s1"}],"rotation":0,"type":"","visible":true,"width":32,"x":64,"y":0}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0},{"draworder":"topdown","id":5,"name":"conversations","objects":[{"height":8,"id":11,"name":"c1","properties":[{"name":"text","type":"string","value":"[{\\"text\\" : \\"WOW\\"}]"}],"rotation":0,"type":"","visible":true,"width":16,"x":96,"y":56}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0}],"nextlayerid":7,"nextobjectid":14,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`)
+files.set("lvl0-s1", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,79,79,79,79,79,79,79,1,2,3,2,3,2,3,4,5,6,11,8,9,8,9,8,9,8,9,16,21,18,28,29,28,29,28,29,19,26,31,8,9,18,19,18,19,18,19,36,11,18,19,51,18,19,56,7,8,6,21,17,18,26,28,29,21,17,18,16,31,27,28,36,8,9,31,27,28,26,41,42,45,46,18,19,41,42,45,46,79,79,79,79,28,29,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,67,68,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":2,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"draworder":"topdown","id":3,"name":"obstacles","objects":[{"height":160,"id":1,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":0,"y":0},{"height":160,"id":2,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":144,"y":0},{"height":80,"id":3,"name":"","rotation":0,"type":"","visible":true,"width":64,"x":48,"y":80},{"height":32,"id":5,"name":"","rotation":0,"type":"","visible":true,"width":128,"x":16,"y":0},{"height":32,"id":6,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":16,"y":128},{"height":32,"id":7,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":112,"y":128}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0},{"draworder":"topdown","id":4,"name":"conversations","objects":[{"height":16,"id":9,"name":"","properties":[{"name":"text","type":"string","value":"{\\"immediate\\":false,\\"content\\":[{\\"who\\":\\"???\\",\\"text\\":[{\\"text\\":\\"What... What happened?\\"}]},{\\"who\\":\\"Vampire\\",\\"text\\":[{\\"text\\":\\"Don't worry about it. Can you tell me what is \\"},{\\"text\\":\\"your name\\",\\"highlight\\":true},{\\"text\\":\\"?\\"}]},{\\"who\\":\\"???\\",\\"text\\":[{\\"text\\":\\"Sure. It's... something like...\\"}]},{\\"who\\":\\"???\\",\\"text\\":[{\\"text\\":\\"hmmm\\"}]},{\\"who\\":\\"Narator\\",\\"text\\":[{\\"text\\":\\"Use this key: \\"},{\\"text\\":\\"AABBCCDDEEFFAABBCCDDEEFFAABBCCDD\\",\\"highlight\\":true},{\\"text\\":\\"to decypher first task.\\"}]}]}"}],"rotation":0,"type":"","visible":true,"width":16,"x":120,"y":104}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0}],"nextlayerid":5,"nextobjectid":10,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`);
+files.set("lvl1-s1", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,79,79,79,79,79,79,79,1,2,3,2,3,2,3,4,5,6,11,8,9,8,9,8,9,8,9,16,21,18,28,29,28,29,28,29,19,26,31,8,9,18,19,18,19,18,19,36,11,18,19,51,18,19,56,7,8,6,21,17,18,26,28,29,21,17,18,16,31,27,28,36,8,9,31,27,28,26,41,42,45,46,18,19,41,42,45,46,79,79,79,79,28,29,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":2,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"draworder":"topdown","id":3,"name":"obstacles","objects":[{"height":160,"id":1,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":0,"y":0},{"height":160,"id":2,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":144,"y":0},{"height":80,"id":3,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":48,"y":80},{"height":80,"id":4,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":96,"y":80},{"height":32,"id":5,"name":"","rotation":0,"type":"","visible":true,"width":128,"x":16,"y":0},{"height":32,"id":6,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":16,"y":128},{"height":32,"id":7,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":112,"y":128}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0},{"draworder":"topdown","id":4,"name":"conversations","objects":[{"height":16,"id":12,"name":"","properties":[{"name":"text","type":"string","value":"{\\"immediate\\":false,\\"content\\":[{\\"who\\":\\"$name\\",\\"text\\":[{\\"text\\":\\"Ah yes. $name... They call me $name\\"}]},{\\"who\\":\\"$name\\",\\"text\\":[{\\"text\\":\\"Where am I?\\"}]},{\\"who\\":\\"Vampire\\",\\"text\\":[{\\"text\\":\\"Glad you still remember something.\\"}]},{\\"who\\":\\"Vampire\\",\\"text\\":[{\\"text\\":\\"You have to leave now... There are much stranger mysteries to be solved\\"}]},{\\"who\\":\\"Vampire\\",\\"text\\":[{\\"text\\":\\"I mean. Beside your name of course\\"}]}]}"}],"rotation":0,"type":"","visible":true,"width":16,"x":120,"y":104}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0},{"draworder":"topdown","id":5,"name":"teleports","objects":[{"height":16,"id":13,"name":"","properties":[{"name":"target","type":"string","value":"lvl1-s2"}],"rotation":0,"type":"","visible":true,"width":32,"x":64,"y":144}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0}],"nextlayerid":6,"nextobjectid":15,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`);
+files.set("lvl1-s2", `{"compressionlevel":-1,"height":10,"infinite":false,"layers":[{"data":[79,79,79,31,22,25,26,79,79,79,1,2,3,2,22,25,3,4,5,6,11,12,13,14,9,8,13,14,15,16,21,22,28,51,56,2,28,3,3,26,31,22,9,26,11,12,19,18,25,36,11,22,19,36,31,32,33,7,25,6,21,22,18,36,41,42,56,22,25,16,31,32,33,36,79,79,31,32,35,26,41,42,45,43,79,79,42,42,45,46,79,79,79,79,79,79,79,79,79,79],"height":10,"id":1,"name":"back","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"data":[0,0,0,0,0,0,0,0,0,0,0,65,0,91,0,0,0,76,0,0,0,0,0,0,0,0,0,0,78,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,81,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"height":10,"id":3,"name":"front","opacity":1,"type":"tilelayer","visible":true,"width":10,"x":0,"y":0},{"draworder":"topdown","id":4,"name":"obstacles","objects":[{"height":32,"id":1,"name":"","rotation":0,"type":"","visible":true,"width":64,"x":0,"y":0},{"height":128,"id":2,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":0,"y":32},{"height":32,"id":3,"name":"","rotation":0,"type":"","visible":true,"width":144,"x":16,"y":128},{"height":128,"id":4,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":144,"y":0},{"height":32,"id":5,"name":"","rotation":0,"type":"","visible":true,"width":48,"x":96,"y":0},{"height":80,"id":6,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":48,"y":48},{"height":16,"id":7,"name":"","rotation":0,"type":"","visible":true,"width":16,"x":80,"y":48},{"height":32,"id":8,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":80,"y":96},{"height":16,"id":9,"name":"","rotation":0,"type":"","visible":true,"width":32,"x":112,"y":48},{"height":12,"id":10,"name":"","rotation":0,"type":"","visible":true,"width":12,"x":98,"y":66}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0},{"draworder":"topdown","id":6,"name":"teleports","objects":[{"height":8,"id":13,"name":"","properties":[{"name":"target","type":"string","value":"lvl1-s1"}],"rotation":0,"type":"","visible":true,"width":32,"x":64,"y":0}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0},{"draworder":"topdown","id":5,"name":"conversations","objects":[{"height":8,"id":11,"name":"","properties":[{"name":"text","type":"string","value":"{\\"immediate\\":false,\\"content\\":[{\\"who\\":\\"$name\\",\\"text\\":[{\\"text\\":\\"I wonder if I'm strong enough to push this box\\"}]},{\\"who\\":\\"Narator\\",\\"text\\":[{\\"text\\":\\"Key for second part is: 01234567890123456789012345678901\\"}]}]}"}],"rotation":0,"type":"","visible":true,"width":16,"x":96,"y":56}],"opacity":1,"type":"objectgroup","visible":true,"x":0,"y":0}],"nextlayerid":7,"nextobjectid":14,"orientation":"orthogonal","renderorder":"right-down","tiledversion":"1.11.2","tileheight":16,"tilesets":[{"firstgid":1,"source":"Dungeon_Tileset.json"}],"tilewidth":16,"type":"map","version":"1.10","width":10}`)
+// endregion
 
-// character sprites can be animated:
+// region sprites
+// animated sprites, "hero" is required to have movement names stand<LURD> and walk<LURD>
 const sprites = new Map();
 sprites.set("hero", {
     "sheet": "blonde_man_shadow.png",
@@ -18,18 +22,27 @@ sprites.set("vampire", {
     "size": 16,
     "movements": [{ "name" : "standD", "values": [[0, 0]] }, { "name" : "standL", "values" : [[0, 0]] }, { "name" : "standR", "values" : [[0, 0]] }, { "name" : "standU", "values" : [[0, 0]] }]
 });
+// endregion
 
+// region levels
 const levels = new Map();
 levels.set("intro", { "scenes": [ { "file": "lvl0-s1", "hero": { "sprite": "hero", "x": 2, "y": 6 }, "npcs": [{"sprite": "vampire", "x": 8, "y": 7}] } ]});
 levels.set("1", { "scenes": [ { "file": "lvl1-s1", "hero": { "sprite": "hero", "x": 7, "y": 7 }, "npcs": [{ "sprite": "vampire", "x": 8, "y": 7 }] }, { "file": "lvl1-s2", "hero": { "sprite": "hero", "x": 5, "y": 1 } } ] });
+// endregion
 
-const doRectanglesOverlap = (rect1, rect2) => {
-    let [left1, top1, right1, bottom1] = [...rect1],
-        [left2, top2, right2, bottom2] = [...rect2];
-
+// region global functions
+function doRectanglesOverlap(rect1, rect2) {
+    let [left1, top1, right1, bottom1] = [...rect1], [left2, top2, right2, bottom2] = [...rect2];
     return !(top1 >= bottom2 || top2 >= bottom1 || right1 <= left2 || right2 <= left1);
 }
 
+function replaceWildcards(template, replacements) {
+    return template.replace(/\$(\w+)/g, (match, key) => {
+        const pair = replacements[key];
+        return pair ? pair : match;
+    });
+}
+// endregion
 
 export class TopDownGameModule {
     static get moduleName() {
@@ -39,8 +52,8 @@ export class TopDownGameModule {
     constructor() {
         this.mapContainer = null;
         this.characterContainer = null;
-        this.conversationHelper = new Conversation(PIXI);
-        this.noFocusHelper = new NoFocus(PIXI, true);
+        this.conversationHelper = new ConversationOverlay(PIXI);
+        this.noFocusHelper = new NoFocusOverlay(PIXI, true);
         this.activeAreas = new Set();
         this.keys = {};
         this.playerSheet = {};
@@ -197,53 +210,29 @@ export class TopDownGameModule {
     resolveAreaVisited() {
         if (!this.frameData) return;
 
-        const charX = this.character.x;
-        const charY = this.character.y;
-        const charW = this.character.width;
-        const charH = this.character.height;
-
-        const charLeft = charX;
-        const charRight = charX + charW;
-        const charTop = charY;
-        const charBottom = charY + charH;
-
         const teleports = this.scene.layers.find(layer => layer.name === 'teleports');
+        const conversations = this.scene.layers.find(layer => layer.name === 'conversations');
 
         const characterRect = [this.character.x / 6, this.character.y / 6, this.character.x/ 6 + 16, this.character.y/ 6 + 16];
 
-        for (const a of teleports.objects) {
-            if (doRectanglesOverlap(characterRect, [a.x, a.y, a.x + a.width, a.y + a.height])) {
-                this.teleport(a.properties[0].value);
-                return;
+        if (teleports) {
+            for (const a of teleports.objects) {
+                if (doRectanglesOverlap(characterRect, [a.x, a.y, a.x + a.width, a.y + a.height])) {
+                    this.teleport(a.properties[0].value);
+                    return;
+                }
             }
         }
 
-        // for (const [id, area] of Object.entries(this.frameData.areas)) {
-        //     if (area.type !== 'RECTANGLE') continue;
-        //
-        //     const areaLeft = area.ax * this.totalTileSize;
-        //     const areaRight = area.bx * this.totalTileSize;
-        //     const areaTop = area.ay * this.totalTileSize;
-        //     const areaBottom = area.by * this.totalTileSize;
-        //
-        //     const intersects =
-        //         charRight >= areaLeft &&
-        //         charLeft <= areaRight &&
-        //         charBottom >= areaTop &&
-        //         charTop <= areaBottom;
-        //
-        //     if (intersects) {
-        //         if (!this.activeAreas.has(id)) {
-        //             this.activeAreas.add(id);
-        //             this.onAreaEntered(id);
-        //         }
-        //     } else {
-        //         if (this.activeAreas.has(id)) {
-        //             this.activeAreas.delete(id);
-        //             this.onAreaLeft(id);
-        //         }
-        //     }
-        // }
+        if (conversations) {
+            for (const a of conversations.objects) {
+                if (doRectanglesOverlap(characterRect, [a.x, a.y, a.x + a.width, a.y + a.height])) {
+                    if (!this.activeAreas.has(a)) { this.activeAreas.add(a); this.onConversationEntered(a.properties[0].value); }
+                } else {
+                    if (this.activeAreas.has(a)) { this.activeAreas.delete(a); this.onConversationLeft(a.properties[0].value); }
+                }
+            }
+        }
     }
 
     teleport(sceneId) {
@@ -252,12 +241,8 @@ export class TopDownGameModule {
         this.showCharacter(scene, 16, this.frameData.mapScale)
     }
 
-    onAreaEntered(id) {
-        this.conversationHelper.initConversation(id);
-    }
-    onAreaLeft(id) {
-        this.conversationHelper.leaveConversation(id);
-    }
+    onConversationEntered(id) { this.conversationHelper.initConversation(id); }
+    onConversationLeft(id) { this.conversationHelper.leaveConversation(id); }
     // endregion
 
     /** CG API - handle data for current frame */
@@ -275,7 +260,6 @@ export class TopDownGameModule {
 
     /** CG API - called when scene needs reinit - including resising. */
     reinitScene(container, canvasData) {
-        // TODO: persist character position
         this.mapContainer = new PIXI.Container();
         this.characterContainer = new PIXI.Container();
         this.mapContainer.sortableChildren = true;
@@ -289,7 +273,7 @@ export class TopDownGameModule {
 
         this.showLevel();
 
-        this.conversationHelper.init(this.frameData.conversations, this.conversationContainer, this.frameData.mapScale);
+        this.conversationHelper.init(this.conversationContainer, this.frameData.mapScale, this.frameData.conversationWildcards);
         this.conversationHelper.restartConversation();
 
         this.resolveAreaVisited();
@@ -323,24 +307,7 @@ export class TopDownGameModule {
 
 }
 
-/**
- * This class is meant as overlay over the game while game is not in focus. Currently, it requires these
- * attributed from FrameData (all shown while game is not in focus - hidden otherwise)
- *
- * - noFocusOverlayAsset - relative path of asset displayed in center of the screen
- * - noFocusOverlayBackgroundColor - int color shown as background
- * - noFocusOverlayBackgroundAlpha - transparency of background color
- *
- * Initialize this overlay using initNoFocusWindow() when you have PIXI container and FrameData available
- *
- * This overlay is triggered using these triggers
- * - window.onfocus
- * - window.onblur
- *
- * Or you can show it manually using
- * - forceFocus(true/false)
- */
-class NoFocus {
+class NoFocusOverlay {
 
     constructor(PIXI, once) {
         this.PIXI = PIXI;
@@ -375,7 +342,7 @@ class NoFocus {
 
         window.onfocus = () => { this.hasFocus = true; this.invalidateFocus(); }
         if (!this.once) window.onblur = () => { this.hasFocus = false; this.invalidateFocus(); }
-        window.addEventListener('mousedown', (e) => { this.hasFocus = true; this.invalidateFocus(); });
+        window.addEventListener('mousedown', (_) => { this.hasFocus = true; this.invalidateFocus(); });
     }
 
     invalidateFocus() {
@@ -384,15 +351,7 @@ class NoFocus {
     }
 }
 
-/**
- * This class is meant as overlay over the game to show conversations.
- *
- * - init() - to initialize conversations with PIXI container
- * - initConversation(id) - to initialize conversation (either immediately or showing "press T to talk")
- * - leaveConversation(id) - to leave conversation with given ID - should be paired with initConversation
- * - processKeys(keys) - to process keys related to conversation
- */
-class Conversation {
+class ConversationOverlay {
 
     constructor(PIXI) {
         this.PIXI = PIXI;
@@ -415,27 +374,26 @@ class Conversation {
         });
     }
 
-    init(conversations, pixiContainer, scale) {
-        if (!conversations || !pixiContainer) return;
-        this.conversations = conversations;
+    init(pixiContainer, scale, wildcards) {
+        if (!pixiContainer) return;
         this.talkTextContainer = pixiContainer;
         this.scale = scale;
+        this.wildcards = wildcards;
     }
 
-    initConversation(id) {
-        if (this.conversationId === id) return;
+    initConversation(conversation) {
+        if (this.conversation === conversation) return;
+        this.conversation = conversation;
 
-        if (this.conversations[id].immediate) {
-            this.startConversation(id);
+        if (this.conversation.immediate) {
+            this.startConversation();
         } else {
-            this.showPressToTalk(id);
+            this.showPressToTalk();
         }
     }
 
-    showPressToTalk(id) {
+    showPressToTalk() {
         if (this.isPressToTalkVisible) return;  // already visible
-        if (this.conversationId === id) return; // conversation already running
-        this.conversationId = id;
         this.conversationStarted = false;
 
         this.talkTextContainer.removeChildren();
@@ -448,34 +406,32 @@ class Conversation {
     }
 
     restartConversation() {
-        this.startConversation(this.conversationId, true);
+        this.startConversation(this.conversation, true);
     }
 
-    startConversation(id, force = false) {
-        if (!force && this.conversationId === id && this.conversationStarted) return;
-
-        this.conversationId = id;
+    startConversation(conversation, force = false) {
+        if (!force && this.conversation === conversation && this.conversationStarted) return;
+        this.conversation = conversation;
         this.conversationStarted = true;
-        this.currentConversation = this.conversations[this.conversationId];
         this.currentLineIndex = 0;
         this.isPressToTalkVisible = false;
         this.renderConversationLine();
     }
 
-    leaveConversation(id) {
-        if (id !== this.conversationId) { return; }
+    leaveConversation(conversation = this.conversation) {
+        if (conversation !== this.conversation) { return; }
 
         this.talkTextContainer.removeChildren().forEach(c => c.destroy({children: true}));
-        this.conversationId = null;
+        this.conversation = null;
         this.conversationStarted = false;
-        this.currentConversation = null;
         this.currentLineIndex = null;
         this.isPressToTalkVisible = false;
     }
 
     renderConversationLine() {
-        if (!this.currentConversation) return;
-        const item = this.currentConversation.content[this.currentLineIndex];
+        if (!this.conversation) return;
+        const json = JSON.parse(this.conversation);
+        const item = json.content[this.currentLineIndex];
         if (!item) return;
 
         this.talkTextContainer.removeChildren();
@@ -485,7 +441,7 @@ class Conversation {
         let offsetX = 0;
 
         // Render Name:
-        const nameText = new this.PIXI.Text(item.who + ": ", this.boldTextStyle);
+        const nameText = new this.PIXI.Text(replaceWildcards(item.who + ": ", this.wildcards), this.boldTextStyle);
         nameText.x = offsetX;
         container.addChild(nameText);
         offsetX += nameText.width;
@@ -493,7 +449,7 @@ class Conversation {
         // Render text parts
         item.text.forEach(part => {
             const style = part.highlight ? this.boldTextStyle : this.baseTextStyle;
-            const piece = new this.PIXI.Text(part.text, style);
+            const piece = new this.PIXI.Text(replaceWildcards(part.text, this.wildcards), style);
             piece.x = offsetX;
             container.addChild(piece);
             offsetX += piece.width;
@@ -503,10 +459,11 @@ class Conversation {
     }
 
     nextConversationLine() {
-        if (!this.currentConversation) return;
+        if (!this.conversation) return;
         this.currentLineIndex++;
-        if (this.currentLineIndex >= this.currentConversation.content.length) {
-            this.leaveConversation(this.conversationId);
+        const json = JSON.parse(this.conversation);
+        if (this.currentLineIndex >= json.content.length) {
+            this.leaveConversation();
         } else {
             this.renderConversationLine();
         }
@@ -571,11 +528,11 @@ class Conversation {
     }
 
     processKeys(keys) {
-        if (this.conversationId && keys.KeyT) {
-            if (this.currentConversation) {
+        if (this.conversation && keys.KeyT) {
+            if (this.conversation && this.conversationStarted) {
                 this.nextConversationLine();
             } else {
-                this.startConversation(this.conversationId);
+                this.startConversation(this.conversation);
             }
         }
     }

@@ -5,16 +5,12 @@ import com.codingame.gameengine.core.GameManager
 import com.codingame.gameengine.core.Module
 import com.google.inject.Inject
 
-data class ConversationTextPart(val text: String, val highlight: Boolean = false)
-data class ConversationItem(val who: String, val text: List<ConversationTextPart>, val copyText: String? = null)
-data class Conversation(val content: List<ConversationItem>, val immediate: Boolean)
-
 data class Level(
     val level: String,
-    val conversations: Map<String, Conversation>,
     val mapScale: Double,
     val x: Int,
-    val y: Int
+    val y: Int,
+    val conversationWildcards: Map<String, String>
 )
 
 class TopDownGameModule @Inject constructor(
@@ -22,7 +18,6 @@ class TopDownGameModule @Inject constructor(
 ) : Module {
 
     init { gameManager.registerModule(this) }
-
 
     override fun onGameInit() {
     }
