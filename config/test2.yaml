@@ -1,0 +1,57 @@
+title:
+  1: "Episode #1 - Introduction"
+  2: "Episode #1 - Introduction"
+testIn: |-
+  2
+  6
+  5 5
+  #####
+  #...#
+  #hb.#
+  #...#
+  #####
+  URD
+  5 5
+  #####
+  #...#
+  #.h.#
+  #...#
+  #####
+  LURD
+  5 5
+  #####
+  #####
+  ##h##
+  #####
+  #####
+  
+  5 5
+  #####
+  #.b.#
+  #.h##
+  #...#
+  #####
+  LD
+  5 5
+  #####
+  #b..#
+  #bbh#
+  #b..#
+  #####
+  
+  5 5
+  #####
+  #b.b#
+  #.h.#
+  #b..#
+  #####
+  LURD
+isTest: 'true'
+isValidator: 'false'
+
+# 6 "testcases"
+# w h
+# h - hero position
+# b - box
+# # - obstacle
+# . - free cell

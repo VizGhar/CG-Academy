@@ -239,24 +239,32 @@ export class TopDownGameModule {
 
     /** CG API - handle data for current frame */
     handleFrameData(frameInfo, frameData) {
-        if (frameData) { this.frameData = frameData; }
+        if (frameData) { this.frameData = frameData[1]; this.showAfter = frameData[0]; }
         this.showLevel();
         this.noFocusHelper.init(this.noFocusContainer);
+        return { frameInfo, frameData }
     }
 
     /** CG API */
     handleGlobalData(players, globalData) { }
 
     /** CG API */
-    updateScene(previousData, currentData, progress, speed) { }
+    updateScene (previousData, currentData, progress) {
+        if (currentData.frameInfo.number > this.showAfter || (currentData.frameInfo.number === this.showAfter && progress === 1)) {
+            this.container.alpha = 1.0;
+        } else {
+            this.container.alpha = 0.0;
+        }
+    }
 
-    /** CG API - called when scene needs reinit - including resising. */
+    /** CG API - called when scene needs reinit - including resizing. */
     reinitScene(container, canvasData) {
         this.mapContainer = new PIXI.Container();
         this.characterContainer = new PIXI.Container();
         this.mapContainer.sortableChildren = true;
         this.noFocusContainer = new PIXI.Container();
         this.conversationContainer = new PIXI.Container();
+        this.container = container;
 
         container.addChild(this.mapContainer);
         container.addChild(this.characterContainer);
@@ -280,6 +288,7 @@ export class TopDownGameModule {
     animateScene(delta) {
         if (!this.frameData) return;
         if (!this.prevKeys) { this.prevKeys = {}; }
+        if (this.container.alpha === 0.0) return;
 
         // key clicked -> try to process conversation
         if (JSON.stringify(this.prevKeys) !== JSON.stringify(this.keys)) {

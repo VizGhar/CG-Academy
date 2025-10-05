@@ -17,6 +17,9 @@ class TopDownGameModule @Inject constructor(
     private val gameManager: GameManager<AbstractPlayer>
 ) : Module {
 
+    private var level: Level? = null
+    private var frames: Int = 0
+
     init { gameManager.registerModule(this) }
 
     override fun onGameInit() {
@@ -26,10 +29,15 @@ class TopDownGameModule @Inject constructor(
     }
 
     override fun onAfterOnEnd() {
+        gameManager.setViewData("TopDownGameModule", listOf(frames, level))
+    }
+
+    fun setFrames(frames: Int) {
+        this.frames = frames
     }
 
     fun setLevel(level: Level) {
-        gameManager.setViewData("TopDownGameModule", level)
+        this.level = level
     }
 
 }
